@@ -1,12 +1,20 @@
-import { PrivateRoutes, Roles } from "@/models"
-import { createUser } from "@/redux/states/user"
+import { PrivateRoutes, PublicRoutes, Roles } from "@/models"
+import { createUser, resetUser, UserKey } from "@/redux/states/user"
 import { getMorty } from "@/services"
+import { clearLocalStorage } from "@/utilities"
+import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  useEffect(()=>{
+    clearLocalStorage(UserKey)
+    dispatch(resetUser())
+    navigate(`/${PublicRoutes.LOGIN}`, {replace: true})
+  }, [])
 
   const  login = async() =>{
     try {
