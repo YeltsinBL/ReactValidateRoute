@@ -4,13 +4,13 @@ import { useSelector } from "react-redux"
 import { Navigate, Outlet } from "react-router-dom"
 
 interface Props {
-  rol: Roles
+  roles: Roles[]
 }
 
-function RoleGuard({rol}: Props) {
+function RoleGuard({roles}: Props) {
   const userState = useSelector((store:AppStore) => store.user)
   
-  return userState.rol === rol ? <Outlet /> 
-    : <Navigate replace to={PrivateRoutes.PRIVATE} />
+  return roles.some(rol => userState.rol.includes(rol)) ? <Outlet /> 
+    : <Navigate replace to={`/${PrivateRoutes.PRIVATE}`} />
 }
 export default RoleGuard

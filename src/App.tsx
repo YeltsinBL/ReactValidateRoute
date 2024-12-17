@@ -28,7 +28,7 @@ function App() {
               <Route element={<AuthGuard privateValidation={true} />} > 
                 <Route path={`${PrivateRoutes.PRIVATE}/*`} element={<Private/>}/>
               </Route>
-              <Route element={<RoleGuard rol={Roles.USER} />}>
+              <Route element={<RoleGuard roles={[Roles.USER, Roles.ADMIN]} />}>
                 <Route path={PrivateRoutes.DASHBOARD} element={<Dashboard />} />
               </Route>
             </RouteWithNotFound>

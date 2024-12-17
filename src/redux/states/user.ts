@@ -6,7 +6,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export const EmptyUserState:UserInfo ={
   id:   0,
   name: '',
-  email:''
+  email:'',
+  rol:[]
 }
 
 export const UserKey = 'user'

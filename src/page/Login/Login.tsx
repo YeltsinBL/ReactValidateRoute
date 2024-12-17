@@ -12,7 +12,7 @@ function Login() {
     try {
         const result = await getMorty()
         // una vez que se obtiene los datos, lo agregamos al Store
-        dispatch(createUser({...result, rol: Roles.ADMIN}))
+        dispatch(createUser({...result, rol: [Roles.SUPPLIER]}))
         navigate(`/${PrivateRoutes.PRIVATE}`, {replace: true})
     } catch (error) { }
 
