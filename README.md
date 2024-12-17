@@ -33,10 +33,13 @@ npm i @reduxjs/toolkit
 
 - Services: donde se hace la llamada a la API.
 - Utilities: Funciones de utilidades globales.
-- Models: se creó el modelo del usuario para el login y nos nombres de las rutas.
+- Models: se creó el modelo del usuario para el login, roles de usuario y los nombres de las rutas.
 - Redux: Contiene todas las variables y acciones globales que se usará en toda la aplicación.
   - State: Se crean Slice, que es una función que contiene un estado inicial y las acciones que contendrá la aplicación de forma global por cada Slice.
-- Guard: Validación de las rutas para dar acceso al usuario.
+- Guard:
+  - Validación de las rutas para dar acceso al usuario.
+  - Validación de los roles del usuario para dar acceso.
 - App.tsx:
   - Suspense: Muestra un cargando mientras se esta validando las rutas.
   - Provider: Asignacción del store de Redux para utilizar las variables y funciones globales.
+  - Se creo otro route para que realice la validación del rol del usuario.

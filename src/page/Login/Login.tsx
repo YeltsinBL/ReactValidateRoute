@@ -1,4 +1,4 @@
-import { PrivateRoutes } from "@/models"
+import { PrivateRoutes, Roles } from "@/models"
 import { createUser } from "@/redux/states/user"
 import { getMorty } from "@/services"
 import { useDispatch } from "react-redux"
@@ -12,7 +12,7 @@ function Login() {
     try {
         const result = await getMorty()
         // una vez que se obtiene los datos, lo agregamos al Store
-        dispatch(createUser(result))
+        dispatch(createUser({...result, rol: Roles.ADMIN}))
         navigate(`/${PrivateRoutes.PRIVATE}`, {replace: true})
     } catch (error) { }
 
